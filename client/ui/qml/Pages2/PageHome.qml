@@ -183,21 +183,6 @@ PageType {
                     parent: root
                 }
             }
-
-            PromoBanner {
-                id: promoBanner
-
-                Layout.fillWidth: true
-                Layout.leftMargin: 16
-                Layout.rightMargin: 16
-                Layout.topMargin: 12
-
-                visible: ServersUiController.isAdVisible
-                text: ServersUiController.adHeader
-                subtitle: ServersUiController.adDescription
-
-                onClicked: Qt.openUrlExternally(ServersUiController.serverAdEndpoint(ServersUiController.defaultServerId))
-            }
         }
     }
 

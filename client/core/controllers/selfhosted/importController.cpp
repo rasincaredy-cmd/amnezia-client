@@ -2,10 +2,14 @@
 
 #include <QDataStream>
 #include <QDebug>
+#include <QEventLoop>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QMap>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 #include <QRandomGenerator>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
@@ -106,6 +110,76 @@ ImportController::ImportResult ImportController::extractConfigFromData(const QSt
     QString prefix;
     QString errormsg;
     ConfigTypes configType = ConfigTypes::Invalid;
+
+    if (config.startsWith("http://") || config.startsWith("https://") || config.startsWith("sub://")) {
+        QString urlStr = config.trimmed();
+        if (urlStr.startsWith("sub://")) {
+            urlStr.replace(0, 6, "https://");
+        }
+
+        QNetworkAccessManager nam;
+        QNetworkRequest request{QUrl(urlStr)};
+        request.setHeader(QNetworkRequest::UserAgentHeader, "AmneziaClean/5.0");
+        request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+
+        QEventLoop loop;
+        QNetworkReply *reply = nam.get(request);
+        QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+        loop.exec();
+
+        if (reply->error() == QNetworkReply::NoError) {
+            const QByteArray responseBytes = reply->readAll();
+            reply->deleteLater();
+
+            QJsonParseError jsonErr;
+            const QJsonDocument jsonDoc = QJsonDocument::fromJson(responseBytes, &jsonErr);
+            if (jsonErr.error == QJsonParseError::NoError && jsonDoc.isObject() && jsonDoc.object().contains("servers")) {
+                const QJsonArray servers = jsonDoc.object().value("servers").toArray();
+                for (const QJsonValue &val : servers) {
+                    if (val.isObject()) {
+                        const QJsonObject serverObj = val.toObject();
+                        if (serverObj.contains("config")) {
+                            auto subRes = extractConfigFromData(serverObj.value("config").toString(), configFileName);
+                            if (subRes.errorCode == ErrorCode::NoError && !subRes.config.empty()) {
+                                importConfig(subRes.config);
+                            }
+                        } else if (serverObj.contains(configKey::containers) || serverObj.contains(configKey::hostName)) {
+                            importConfig(serverObj);
+                        }
+                    }
+                }
+                result.errorCode = ErrorCode::NoError;
+                return result;
+            }
+
+            QString responseStr = QString::fromUtf8(responseBytes).trimmed();
+            const QByteArray decodedBytes = QByteArray::fromBase64(responseBytes.trimmed());
+            if (!decodedBytes.isEmpty() && (decodedBytes.contains("://") || decodedBytes.contains("[Interface]"))) {
+                responseStr = QString::fromUtf8(decodedBytes).trimmed();
+            }
+
+            const QStringList lines = responseStr.split(QRegularExpression("[\r\n]+"), Qt::SkipEmptyParts);
+            if (lines.size() > 1) {
+                for (const QString &line : lines) {
+                    const QString trimmedLine = line.trimmed();
+                    if (!trimmedLine.isEmpty()) {
+                        auto subRes = extractConfigFromData(trimmedLine, configFileName);
+                        if (subRes.errorCode == ErrorCode::NoError && !subRes.config.empty()) {
+                            importConfig(subRes.config);
+                        }
+                    }
+                }
+                result.errorCode = ErrorCode::NoError;
+                return result;
+            } else if (!responseStr.isEmpty()) {
+                return extractConfigFromData(responseStr, configFileName);
+            }
+        } else {
+            reply->deleteLater();
+            result.errorCode = ErrorCode::ImportOpenConfigError;
+            return result;
+        }
+    }
 
     if (config.startsWith("vless://")) {
         configType = ConfigTypes::Xray;

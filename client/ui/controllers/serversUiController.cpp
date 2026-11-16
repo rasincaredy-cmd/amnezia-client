@@ -474,15 +474,6 @@ bool ServersUiController::hasServersFromGatewayApi() const
 
 bool ServersUiController::isAdVisible() const
 {
-    const QString defaultServerId = m_serversController->getDefaultServerId();
-    if (defaultServerId.isEmpty()) {
-        return false;
-    }
-    for (const auto &description : m_orderedServerDescriptions) {
-        if (description.serverId == defaultServerId) {
-            return description.isAdVisible;
-        }
-    }
     return false;
 }
 

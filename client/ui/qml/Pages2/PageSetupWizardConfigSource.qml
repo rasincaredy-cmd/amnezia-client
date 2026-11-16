@@ -122,22 +122,16 @@ PageType {
                 Layout.rightMargin: 16
                 Layout.leftMargin: 16
 
-                text: qsTr("VPN by Amnezia")
-                subtitle: qsTr("The easiest way to connect to the VPN")
+                text: qsTr("VPN Subscription")
+                subtitle: qsTr("Import nodes from subscription URL")
 
-                badgeText: qsTr("Recommended")
-
-                icon.source: "qrc:/images/controls/amnezia.svg"
+                icon.source: "qrc:/images/controls/folder-search-2.svg"
 
                 enabled: !root.isRestoringBackup
 
                 onClicked: {
-                    PageController.showBusyIndicator(true)
-                    var result = SubscriptionUiController.fillAvailableServices()
-                    PageController.showBusyIndicator(false)
-                    if (result) {
-                        PageController.goToPage(PageEnum.PageSetupWizardApiServicesList)
-                    }
+                    textKey.textField.forceActiveFocus()
+                    PageController.showNotificationMessage(qsTr("Insert your subscription link into the key field"))
                 }
             }
 
