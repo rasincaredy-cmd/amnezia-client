@@ -175,17 +175,9 @@ Popup {
             SmallTextType {
                 Layout.fillWidth: true
 
-                text: root.text.replace(/\n/g, "<br>").replace(/<a /g, "<a style=\"color: " + AmneziaStyle.color.textInfoInverse + "; text-decoration: none\" ")
+                text: root.text.replace(/\n/g, "<br>")
                 textFormat: Text.RichText
                 color: AmneziaStyle.color.textInverted
-
-                onLinkActivated: function(link) {
-                    Qt.openUrlExternally(LanguageUiController.getCurrentDocsUrl(link))
-                }
-
-                HoverHandler {
-                    cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
-                }
             }
 
             AbstractButton {
