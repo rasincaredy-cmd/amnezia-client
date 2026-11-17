@@ -1,0 +1,1 @@
+vless://b0351740-1e5b-4c6e-8212-075f1b1c3412@48.102.173.96:443?type=tcp&security=reality&pbk=fakePubkey&fp=chrome&sni=google.com&sid=123456#%F0%9F%87%B3%F0%9F%87%B1%20Moschata%20VLESS

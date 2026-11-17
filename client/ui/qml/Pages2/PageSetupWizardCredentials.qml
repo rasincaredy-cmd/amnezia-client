@@ -116,43 +116,7 @@ PageType {
                     }
                 }
 
-                ColumnLayout {
-                    Layout.fillWidth: true
 
-                    spacing: 12
-
-                    BasicCardType {
-                        id: hostLink
-
-                        Layout.fillWidth: true
-
-                        visible: GC.isDesktop() && !IsMacOsNeBuild
-
-                        text: qsTr("Don't have a server?")
-                        subtitle: qsTr("Amnezia Hosting - VPN servers without complicated settings")
-
-                        icon.source: "qrc:/images/controls/amnezia.svg"
-
-                        onClicked: {
-                            Qt.openUrlExternally(LanguageUiController.getCurrentHostUrl())
-                        }
-                    }
-
-                    BasicCardType {
-                        id: siteLink
-
-                        Layout.fillWidth: true
-
-                        text: qsTr("How to run your VPN server")
-                        subtitle: qsTr("Where to get connection data, step-by-step instructions for buying a VPS")
-
-                        icon.source: "qrc:/images/controls/help-circle.svg"
-
-                        onClicked: {
-                            Qt.openUrlExternally(LanguageUiController.getCurrentSiteUrl("starter-guide"))
-                        }
-                    }
-                }
             }
         }
     }

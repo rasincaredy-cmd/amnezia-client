@@ -142,9 +142,15 @@ ImportController::ImportResult ImportController::extractConfigFromData(const QSt
                             auto subRes = extractConfigFromData(serverObj.value("config").toString(), configFileName);
                             if (subRes.errorCode == ErrorCode::NoError && !subRes.config.empty()) {
                                 importConfig(subRes.config);
+                                if (result.config.empty()) {
+                                    result.config = subRes.config;
+                                }
                             }
                         } else if (serverObj.contains(configKey::containers) || serverObj.contains(configKey::hostName)) {
                             importConfig(serverObj);
+                            if (result.config.empty()) {
+                                result.config = serverObj;
+                            }
                         }
                     }
                 }
@@ -166,6 +172,9 @@ ImportController::ImportResult ImportController::extractConfigFromData(const QSt
                         auto subRes = extractConfigFromData(trimmedLine, configFileName);
                         if (subRes.errorCode == ErrorCode::NoError && !subRes.config.empty()) {
                             importConfig(subRes.config);
+                            if (result.config.empty()) {
+                                result.config = subRes.config;
+                            }
                         }
                     }
                 }

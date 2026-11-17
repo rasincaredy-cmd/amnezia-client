@@ -33,8 +33,8 @@ PageType {
             NavigationBarType {
                 Layout.fillWidth: true
 
-                title: qsTr("Connection key")
-                description: qsTr("A line that starts with vpn://...")
+                title: qsTr("VPN Subscription")
+                description: qsTr("Insert your subscription link (https://... or sub://...) to import nodes")
             }
 
             TextFieldType {
@@ -44,13 +44,19 @@ PageType {
                 Layout.rightMargin: 16
                 Layout.leftMargin: 16
 
-                headerText: qsTr("Key")
-                textField.placeholderText: "vpn://"
-                buttonText: qsTr("Insert")
+                headerText: qsTr("Subscription link or key")
+                textField.placeholderText: "https://..."
+                buttonText: textField.text === "" ? qsTr("Insert") : ""
+                trailingIconSource: textField.text === "" ? "" : "qrc:/images/controls/close.svg"
 
                 clickedFunc: function() {
                     textField.text = ""
                     textField.paste()
+                }
+
+                onTrailingClicked: {
+                    textField.clear()
+                    textField.forceActiveFocus()
                 }
             }
         }
@@ -68,11 +74,19 @@ PageType {
 
             Layout.fillWidth: true
 
+            enabled: textKey.textField.text.trim() !== ""
             text: qsTr("Continue")
 
             onClicked: {
-                if (ImportController.extractConfigFromData(textKey.textField.text)) {
+                if (textKey.textField.text.trim() === "") {
+                    return
+                }
+                PageController.showBusyIndicator(true)
+                if (ImportController.extractConfigFromData(textKey.textField.text.trim())) {
+                    PageController.showBusyIndicator(false)
                     PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+                } else {
+                    PageController.showBusyIndicator(false)
                 }
             }
         }

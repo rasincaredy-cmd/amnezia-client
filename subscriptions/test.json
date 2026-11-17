@@ -1,0 +1,10 @@
+{
+  "name": "Moschata VPN Test Subscription",
+  "version": 1,
+  "servers": [
+    {
+      "name": "🇳🇱 Нидерланды (AmneziaWG)",
+      "config": "[Interface]\nPrivateKey = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nAddress = 10.8.0.50/24\nDNS = 1.1.1.1\nJc = 4\nJmin = 50\nJmax = 1000\nS1 = 0\nS2 = 0\nH1 = 1\nH2 = 2\nH3 = 3\nH4 = 4\n\n[Peer]\nPublicKey = bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\nEndpoint = 48.102.173.96:585\nAllowedIPs = 0.0.0.0/0\n"
+    }
+  ]
+}

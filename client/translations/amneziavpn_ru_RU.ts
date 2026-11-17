@@ -3392,13 +3392,13 @@ Create one from the current settings.</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="69"/>
-        <source>Support Amnezia</source>
-        <translation>Поддержите Amnezia</translation>
+        <source>Moschata VPN</source>
+        <translation>Moschata VPN</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="80"/>
-        <source>Amnezia is a free and open-source application. You can support the developers if you like it.</source>
-        <translation>Amnezia — это бесплатное приложение с открытым исходным кодом. Поддержите разработчиков, если оно вам нравится.</translation>
+        <source>Clean, fast and private VPN client with subscription support. No ads, no bloatware.</source>
+        <translation>Чистый, быстрый и приватный VPN-клиент с поддержкой подписок. Без рекламы и лишних сервисов.</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="101"/>
@@ -3426,34 +3426,19 @@ Create one from the current settings.</source>
         <translation>Проверка...</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="225"/>
-        <source>Privacy Policy</source>
-        <translation>Политика конфиденциальности</translation>
-    </message>
-    <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="112"/>
-        <source>Telegram group</source>
-        <translation>Группа в Telegram</translation>
+        <source>Moschata VPN Bot</source>
+        <translation>Бот Moschata VPN</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="113"/>
-        <source>To discuss features</source>
-        <translation>Для обсуждения возможностей</translation>
-    </message>
-    <message>
-        <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="116"/>
-        <source>https://telegram.me/amnezia_vpn_en</source>
-        <translation>https://telegram.me/amnezia_vpn</translation>
-    </message>
-    <message>
-        <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="122"/>
-        <source>Amnezia Hub Telegram Bot</source>
-        <translation>Telegram-бот Amnezia Hub</translation>
+        <source>Telegram bot &amp; subscriptions</source>
+        <translation>Telegram-бот и подписки</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="123"/>
-        <source>Ask us anything</source>
-        <translation>Ответим на любые вопросы</translation>
+        <source>Clean Edition Source Code</source>
+        <translation>Исходный код (Clean Edition)</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="132"/>
@@ -5487,13 +5472,13 @@ Only one can be active at a time: VPN or local proxy</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="125"/>
-        <source>VPN by Amnezia</source>
-        <translation>VPN от Amnezia</translation>
+        <source>VPN Subscription</source>
+        <translation>Подписка на VPN</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="126"/>
-        <source>The easiest way to connect to the VPN</source>
-        <translation>Самый простой способ подключиться к VPN</translation>
+        <source>Import nodes from subscription URL</source>
+        <translation>Импорт серверов по ссылке на подписку</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="150"/>
@@ -5818,18 +5803,18 @@ Only one can be active at a time: VPN or local proxy</source>
     <name>PageSetupWizardTextKey</name>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardTextKey.qml" line="36"/>
-        <source>Connection key</source>
-        <translation>Ключ для подключения</translation>
+        <source>VPN Subscription</source>
+        <translation>Подписка на VPN</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardTextKey.qml" line="37"/>
-        <source>A line that starts with vpn://...</source>
-        <translation>Строка, которая начинается с vpn://...</translation>
+        <source>Insert your subscription link (https://... or sub://...) to import nodes</source>
+        <translation>Вставьте ссылку на подписку (https://... или sub://...) для загрузки серверов</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardTextKey.qml" line="47"/>
-        <source>Key</source>
-        <translation>Ключ</translation>
+        <source>Subscription link or key</source>
+        <translation>Ссылка на подписку или ключ</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardTextKey.qml" line="49"/>
@@ -5839,7 +5824,7 @@ Only one can be active at a time: VPN or local proxy</source>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardTextKey.qml" line="71"/>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Загрузить серверы</translation>
     </message>
 </context>
 <context>

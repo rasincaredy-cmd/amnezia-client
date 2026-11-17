@@ -130,8 +130,7 @@ PageType {
                 enabled: !root.isRestoringBackup
 
                 onClicked: {
-                    textKey.textField.forceActiveFocus()
-                    PageController.showNotificationMessage(qsTr("Insert your subscription link into the key field"))
+                    PageController.goToPage(PageEnum.PageSetupWizardTextKey)
                 }
             }
 
@@ -249,45 +248,8 @@ PageType {
                 }
             }
 
-            BasicCardType {
-                Layout.fillWidth: true
-                Layout.topMargin: 12
-                Layout.rightMargin: 16
-                Layout.leftMargin: 16
-
-                visible: PageController.isStartPageVisible() && Qt.platform.os !== "ios" && !IsMacOsNeBuild
-
-                text: qsTr("I have nothing")
-
-                icon.source: "qrc:/images/controls/help-circle.svg"
-
-                enabled: !root.isRestoringBackup
-
-                onClicked: Qt.openUrlExternally(LanguageUiController.getCurrentSiteUrl())
-            }
-
             Item {
                 Layout.fillHeight: true
-            }
-
-            LinkButtonType {
-                id: siteLink2
-
-                Layout.topMargin: 24
-                Layout.bottomMargin: 24 + PageController.safeAreaBottomMargin
-                Layout.alignment: Qt.AlignHCenter
-
-                size: LinkButtonType.Medium
-
-                visible: Qt.platform.os !== "ios" && !IsMacOsNeBuild
-
-                text: qsTr("Site Amnezia")
-
-                rightImageSource: "qrc:/images/controls/external-link.svg"
-
-                onClicked: {
-                    Qt.openUrlExternally(LanguageUiController.getCurrentSiteUrl())
-                }
             }
         }
     }

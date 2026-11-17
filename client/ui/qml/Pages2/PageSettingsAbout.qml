@@ -66,7 +66,7 @@ PageType {
                 Layout.rightMargin: 16
 
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Support Amnezia")
+                text: qsTr("Moschata VPN")
             }
 
             BodyTextType {
@@ -77,7 +77,7 @@ PageType {
 
                 horizontalAlignment: Text.AlignHCenter
                 color: AmneziaStyle.color.textSecondary
-                text: qsTr("Amnezia is a free and open-source application. You can support the developers if you like it.")
+                text: qsTr("Clean, fast and private VPN client with subscription support. No ads, no bloatware.")
             }
 
             ColumnLayout {
@@ -109,51 +109,21 @@ PageType {
                         ListItemType {
                             Layout.fillWidth: true
 
-                            text: qsTr("Telegram group")
-                            subtitle: qsTr("To discuss features")
+                            text: qsTr("Moschata VPN Bot")
+                            subtitle: qsTr("Telegram bot & subscriptions")
                             icon.source: "qrc:/images/controls/telegram.svg"
 
-                            onClicked: Qt.openUrlExternally(qsTr("https://telegram.me/amnezia_vpn_en"))
-                        }
-
-                        ListItemType {
-                            Layout.fillWidth: true
-
-                            text: qsTr("Amnezia Hub Telegram Bot")
-                            subtitle: qsTr("Ask us anything")
-                            icon.source: "qrc:/images/controls/telegram.svg"
-
-                            onClicked: Qt.openUrlExternally("https://telegram.me/amneziahub_bot?start=utm_ioIdiSEUDN")
-                        }
-
-                        ListItemType {
-                            Layout.fillWidth: true
-
-                            text: qsTr("support@amnezia.org")
-                            subtitle: qsTr("For reviews and bug reports")
-                            icon.source: "qrc:/images/controls/mail.svg"
-
-                            onClicked: Qt.openUrlExternally(qsTr("mailto:support@amnezia.org"))
+                            onClicked: Qt.openUrlExternally("https://t.me/MoschataVPN_bot")
                         }
 
                         ListItemType {
                             Layout.fillWidth: true
 
                             text: qsTr("GitHub")
-                            subtitle: qsTr("Discover the source code")
+                            subtitle: qsTr("Clean Edition Source Code")
                             icon.source: "qrc:/images/controls/github.svg"
 
-                            onClicked: Qt.openUrlExternally(qsTr("https://github.com/amnezia-vpn/amnezia-client"))
-                        }
-
-                        ListItemType {
-                            Layout.fillWidth: true
-
-                            text: qsTr("Website")
-                            subtitle: qsTr("Visit official website")
-                            icon.source: "qrc:/images/controls/amnezia.svg"
-
-                            onClicked: Qt.openUrlExternally(LanguageUiController.getCurrentSiteUrl())
+                            onClicked: Qt.openUrlExternally("https://github.com/rasincaredy-cmd/amnezia-client")
                         }
                     }
                 }
@@ -212,20 +182,6 @@ PageType {
 
                         onClicked: {
                             UpdateController.checkForUpdates()
-                        }
-                    }
-
-                    ButtonType {
-                        id: privacyPolicyButton
-
-                        Layout.alignment: Qt.AlignHCenter
-
-                        variant: ButtonType.Text
-                        size: ButtonType.Medium
-                        text: qsTr("Privacy Policy")
-
-                        onClicked: {
-                            Qt.openUrlExternally(LanguageUiController.getCurrentSiteUrl("policy"))
                         }
                     }
                 }
