@@ -120,7 +120,7 @@ ImportController::ImportResult ImportController::extractConfigFromData(const QSt
         QNetworkAccessManager nam;
         QNetworkRequest request{QUrl(urlStr)};
         request.setHeader(QNetworkRequest::UserAgentHeader, "AmneziaClean/5.0");
-        request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+        request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
 
         QEventLoop loop;
         QNetworkReply *reply = nam.get(request);
